@@ -4,7 +4,7 @@
 > change — a declaration-level change → Founding gate.)* A Commons knowledge-unit in its own right
 > (claim + refutation + ledger), homed **separately from any instance** so the *schema* falsifies
 > independently of the disciplines that conform to it. **Provisional — n=1** (seeking a second
-> discipline to map). Origin: `dyad-steward`. Record shape: `ontology/discipline.md` (body, this gate)
+> discipline to map). Origin: `dyad-steward`. Record shape: `ontology/discipline/schema.md` (body, this gate)
 > + `ontology/discipline/ledger/<contributor-hash>-<n>.md` (append-only; the ontology dogfoods its own structure).
 >
 > **Universal record shape (invariant, Founding-gated 2026-05-31):** *every* Commons knowledge-unit
@@ -58,7 +58,7 @@ atomization regress**.
 ## Ledger
 
 Survived tests of *this schema* (distinct from any instance's ledger) live in `ledger/`. See
-`ontology/ledger/`. **n=1** — seeking a second discipline to map.
+`ontology/discipline/ledger/`. **n=1** — seeking a second discipline to map.
 
 ## Open joints
 
