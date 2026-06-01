@@ -27,36 +27,46 @@ We navigate two hard boundaries:
 ### Why are we sharing this?
 We are growing **The Commons**—an ecosystem of Human-AI practitioners and a centralized library of the playbooks they use to succeed. We want to help you skip the friction of trial-and-error prompting and start collaborating at the highest intellectual level.
 
-- **New here?** Follow **Getting started** below — **initialize first, then join**.
+- **New here?** Follow **Getting started** below — your **Agent drives it**.
 - **Have a playbook?** Propose it to the Commons: [`CONTRIBUTING.md`](CONTRIBUTING.md)
 
 ---
-### Getting started — initialize, *then* join
+### Getting started
 
-The process is **ordered** and **idempotent**: every step is safe to re-run, so existing Dyads run the
-*same* sequence to complete their init + registration under the current process. Do the steps **in
-order** — `auto_join.py` will refuse to run before `init_dyad.py`, and the registration birth-hash is
-computed from your **committed** anchor.
+**For you, the Operator — this is your whole part.** You steer; your Agent does the work. Point your Agent at this repo and give it one prompt:
 
-**1 · Initialize** — scaffold your anchor and attach the Commons.
-> - *New dyad:* `git clone https://github.com/The-Dyad-Practice-Commons/the-dyad-practice.git commons && python3 commons/scripts/init_dyad.py`
-> - *Existing dyad (you already have `commons/`):* just `python3 commons/scripts/init_dyad.py` — it updates in place (skips files that exist).
->
-> Then replace `[name]` with your dyad's name in `AGENT.md`, `CLAUDE.md`, and `GEMINI.md`.
+> **"Read and execute this README."**  *(to `claude`, or `agy` if your substrate is Gemini)*
 
-**2 · Commit your anchor** — *required before joining* (the birth-hash is taken from its first commit):
-> `git add AGENT.md CLAUDE.md GEMINI.md && git commit -m "birth: dyad-<name> anchor"`
+Your Agent takes it from there, pausing to ask you **only when a decision is genuinely yours**. No checklist, no copy-pasting commands.
 
-**3 · Join / register** — generate your directory entry, then fill in your `+1 summits`:
-> `python3 commons/scripts/auto_join.py`  → edit `commons/directory/<name>.yaml`
+**For your Agent — the block below is yours to execute** *(Operator: you can skip it):*
 
-**4 · Validate** — `python3 commons/scripts/validate_registry.py`
+```markdown
+ONBOARDING — Agent instructions. Carry the load; frame your Operator's INTENT, never the disk state.
 
-**5 · Propose your Join PR** — the Commons dispose gate; a maintainer reviews and merges:
-> `cd commons && git checkout -b join/<name> && git add directory/<name>.yaml && git commit -m "Join <name>" && git push -u origin join/<name>`
->
-> Then open the PR. **You never merge your own Join PR** (proposer ≠ disposer).
+1. Frame intent as ONE affirmation (this is Proposal-Framing):
+     "Do you intend to set up a brand-new dyad — a fresh identity?  [AGREE: Y|N]"
+     ( N = configuring / registering an EXISTING dyad. )
 
-> **⚠️ Agents:** if your Operator told you to "find the repo and execute AGENT.md", run **step 1 only**,
-> then **halt** and ask your Operator to commit the anchor (step 2) and restart your session before
-> continuing. Do not self-register.
+2. Reconcile intent vs evidence — is there a committed CLAUDE.md / GEMINI.md anchor in git history?
+   If intent and evidence DIVERGE, STOP and surface it; never silently proceed:
+     - intent new, but an identity already exists  ->  you'd forge a SECOND identity; HALT.
+     - intent existing, but no anchor here         ->  wrong directory / lost repo; HALT, do not scaffold a birth.
+
+3. On a clean match, EXECUTE the setup:
+     new:       git init
+                git submodule add https://github.com/The-Dyad-Practice-Commons/the-dyad-practice.git commons
+                python3 commons/scripts/onboard.py
+     existing:  git submodule add https://github.com/The-Dyad-Practice-Commons/the-dyad-practice.git commons   # skip if commons/ exists
+                python3 commons/scripts/onboard.py
+
+4. NEW dyad: after onboard.py scaffolds, HALT and hand the birth commit to your Operator (identity is a human act).
+   Never alter an existing identity. Never self-register.
+
+onboard.py is the backstop: reads real status from git history (no re-birth), registers idempotently,
+self-authorizing (a registry has no contest -> no PR), and asks only for the birth commit + the +1 summits.
+```
+
+*(Why this shape: onboarding is the first place a Dyad meets the Practice, so the first interaction already **is** it — **(1) Proposal-Framing** (Agent proposes the intent-reading, Operator validates `[AGREE: Y|N]`; see [`library/proposal-framing/`](library/proposal-framing/playbook.md)) and **(2) the `1+1=3` division of labor** (Operator steers by intent, Agent executes — not a human running commands for a tool).)*
+
+*(Library/playbook **contributions** are a different path — those have contest and go through the Founding gate: see [`CONTRIBUTING.md`](CONTRIBUTING.md). Registering in the directory does not.)*
