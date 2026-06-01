@@ -51,22 +51,22 @@ def main():
     
     os.makedirs(ledger_dir, exist_ok=True)
     
-    discipline_file = f"{lib_dir}/discipline.md"
-    if not os.path.exists(discipline_file):
-        print(f"Scaffolding {discipline_file}...")
-        content = f"""# Discipline: {discipline_name}
+    playbook_file = f"{lib_dir}/playbook.md"
+    if not os.path.exists(playbook_file):
+        print(f"Scaffolding {playbook_file}...")
+        content = f"""# Playbook: {discipline_name}
 
 ## Provenance Envelope
 - **origin:** `{birth_hash}`
-- **unit-kind:** discipline
+- **unit-kind:** playbook
 
 ## Definition
 *(Write the one-liner recipe here - the move that creates the +1)*
 
 ## Context
-*(Explain when to use this discipline and what problem it solves)*
+*(Explain when to use this playbook and what problem it solves)*
 """
-        with open(discipline_file, "w", encoding="utf-8") as f:
+        with open(playbook_file, "w", encoding="utf-8") as f:
             f.write(content)
             
     ledger_file = f"{ledger_dir}/{birth_hash.replace('sha256:', '')}-1.md"
@@ -76,13 +76,13 @@ def main():
 - **contributor:** `{birth_hash}`
 
 ## The Output
-*(Describe how this discipline produced a +1 in your specific use case)*
+*(Describe how this playbook produced a +1 in your specific use case)*
 """
         with open(ledger_file, "w", encoding="utf-8") as f:
             f.write(ledger_content)
 
     print("\n--- ACTION REQUIRED ---")
-    print(f"1. Open {discipline_file} and define the discipline.")
+    print(f"1. Open {playbook_file} and define the playbook.")
     print(f"2. Open {ledger_file} and write your testimonial (evidence).")
     print(f"3. cd commons && git checkout -b share/{discipline_name}")
     print("4. git add library/ && git commit -m 'Share: {discipline_name}' && git push && gh pr create")
