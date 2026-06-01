@@ -54,13 +54,15 @@ def main():
     playbook_file = f"{lib_dir}/playbook.md"
     if not os.path.exists(playbook_file):
         print(f"Scaffolding {playbook_file}...")
-        content = f"""# Playbook: {discipline_name}
+        content = f"""---
+origin: "{birth_hash}"
+unit-kind: playbook
+schema-version: discipline-ontology@2026-05-31
+trigger: "Fill in the trigger condition here"
+---
+# Playbook: {discipline_name}
 
-## Provenance Envelope
-- **origin:** `{birth_hash}`
-- **unit-kind:** playbook
-
-## Definition
+## The Move
 *(Write the one-liner recipe here - the move that creates the +1)*
 
 ## Context
