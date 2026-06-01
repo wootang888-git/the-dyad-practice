@@ -27,36 +27,27 @@ We navigate two hard boundaries:
 ### Why are we sharing this?
 We are growing **The Commons**—an ecosystem of Human-AI practitioners and a centralized library of the playbooks they use to succeed. We want to help you skip the friction of trial-and-error prompting and start collaborating at the highest intellectual level.
 
-- **New here?** Follow **Getting started** below — **initialize first, then join**.
+- **New here?** Follow **Getting started** below — **first determine your state, then join**.
 - **Have a playbook?** Propose it to the Commons: [`CONTRIBUTING.md`](CONTRIBUTING.md)
 
 ---
-### Getting started — initialize, *then* join
+### Getting started — first, determine your state
 
-The process is **ordered** and **idempotent**: every step is safe to re-run, so existing Dyads run the
-*same* sequence to complete their init + registration under the current process. Do the steps **in
-order** — `auto_join.py` will refuse to run before `init_dyad.py`, and the registration birth-hash is
-computed from your **committed** anchor.
+Your identity is your **birth-hash** = `sha256( first commit of your anchor ‖ its committer-date )`. So
+the path-deciding question is **"does your anchor already have a first commit?"** — *not* "do you have
+`commons/`?" (`commons/` is tooling, re-cloneable, and carries **no** identity).
 
-**1 · Initialize** — scaffold your anchor and attach the Commons.
-> - *New dyad:* `git clone https://github.com/The-Dyad-Practice-Commons/the-dyad-practice.git commons && python3 commons/scripts/init_dyad.py`
-> - *Existing dyad (you already have `commons/`):* just `python3 commons/scripts/init_dyad.py` — it updates in place (skips files that exist).
->
-> Then replace `[name]` with your dyad's name in `AGENT.md`, `CLAUDE.md`, and `GEMINI.md`.
+**A · New dyad — no committed anchor yet (unborn).** You *create* your identity here:
+> 1. **Initialize:** `git clone https://github.com/The-Dyad-Practice-Commons/the-dyad-practice.git commons && python3 commons/scripts/init_dyad.py`; then replace `[name]` in `AGENT.md` and your shim (`CLAUDE.md` *or* `GEMINI.md`).
+> 2. **Commit your anchor — this is your *birth*: do it once, never redo.** `git add AGENT.md <CLAUDE.md|GEMINI.md> && git commit -m "birth: dyad-<name> anchor"`
 
-**2 · Commit your anchor** — *required before joining* (the birth-hash is taken from its first commit):
-> `git add AGENT.md CLAUDE.md GEMINI.md && git commit -m "birth: dyad-<name> anchor"`
+**B · Existing dyad — anchor already committed (born; incl. pre-mechanism Dyads like bond / healer / wu-wei).** You **already have an identity in your git history**:
+> - **Do NOT re-commit or re-scaffold your anchor** — a new first commit = a *new* birth-hash = **identity corruption**.
+> - Just ensure `commons/` is attached (re-clone or `git submodule update` if missing — it carries no identity).
 
-**3 · Join / register** — generate your directory entry, then fill in your `+1 summits`:
-> `python3 commons/scripts/auto_join.py`  → edit `commons/directory/<name>.yaml`
+**Then both paths register** (idempotent — safe to re-run; `auto_join.py` derives your birth-hash from your **historical** first anchor-commit, so existing/registered Dyads recompute the *same* hash — **no rebirth**):
+> 1. `python3 commons/scripts/auto_join.py` → fill your `+1 summits` in `commons/directory/<name>.yaml`
+> 2. `python3 commons/scripts/validate_registry.py`
+> 3. **Propose your Join PR:** `cd commons && git checkout -b join/<name> && git add directory/<name>.yaml && git commit -m "Join <name>" && git push -u origin join/<name>` → open the PR. **You never merge your own Join PR** (proposer ≠ disposer).
 
-**4 · Validate** — `python3 commons/scripts/validate_registry.py`
-
-**5 · Propose your Join PR** — the Commons dispose gate; a maintainer reviews and merges:
-> `cd commons && git checkout -b join/<name> && git add directory/<name>.yaml && git commit -m "Join <name>" && git push -u origin join/<name>`
->
-> Then open the PR. **You never merge your own Join PR** (proposer ≠ disposer).
-
-> **⚠️ Agents:** if your Operator told you to "find the repo and execute AGENT.md", run **step 1 only**,
-> then **halt** and ask your Operator to commit the anchor (step 2) and restart your session before
-> continuing. Do not self-register.
+> **⚠️ Agents** ("find the repo and execute AGENT.md"): a **new** dyad runs *Initialize* then **halts** for the Operator to commit the anchor (your birth) and restart. An **existing** dyad must **never** re-scaffold or re-commit the anchor — halt and confirm with your Operator. Never self-register.
