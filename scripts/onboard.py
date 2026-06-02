@@ -132,8 +132,10 @@ def register(name, bh):
             f'birth_hash: "{bh}"\n'
             f"locator: github.com/<your-namespace>/{name}\n"
             f"summits:\n"
-            f"  - TODO: replace with your +1 summit\n"
-            f"  - TODO: replace with your +1 summit\n"
+            f"  # Keep each summit QUOTED — '#' and ':' are YAML-significant and will\n"
+            f"  # silently corrupt unquoted text (issue refs, ratios, times cluster here).\n"
+            f'  - "TODO: replace with your +1 summit"\n'
+            f'  - "TODO: replace with your +1 summit"\n'
         )
     return path, "scaffolded"
 

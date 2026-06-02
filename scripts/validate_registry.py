@@ -22,7 +22,14 @@ def validate_file(filepath):
         if not isinstance(data['summits'], list) or not data['summits']:
             print(f"FAIL {filepath}: 'summits' must be a non-empty list of strings.")
             return False
-            
+
+        for s in data['summits']:
+            if not isinstance(s, str) or not s.strip():
+                print(f"FAIL {filepath}: every summit must be a non-empty string, got "
+                      f"{type(s).__name__}: {s!r}. (Unquoted '#' or ':' in YAML silently "
+                      f"corrupts a summit into a comment/dict — quote the scalar.)")
+                return False
+
         for field in ['name', 'birth_hash', 'locator']:
             if not isinstance(data[field], str) or not data[field].strip():
                 print(f"FAIL {filepath}: '{field}' must be a non-empty string.")
