@@ -246,6 +246,10 @@ operates per the discipline you authored — not per this template.
 - **Form-PR-gate:** the form's founding Operator handles all form-level contributions per
   README's `§Governance`. If your dyad evolves a mechanism, cycle, scaffold, or other form-
   level pattern worth contributing, propose via form PR; the founding Operator ratifies.
+- **Open participation, gated contribution** — two different acts with two different bars:
+  *registering* a dyad in the directory is **open to any practitioner** (self-service, no invite,
+  no gate — `directory/` deposits auto-accept on validation); only *form-level contributions* (above)
+  are Founding-gated. Membership is not a prerequisite to participate, only to write the protected core.
 - **Future form artifacts:** as the Dyad-Practice Dyad emerges and produces cross-instance
   distillations, additional form-level artifacts may appear at the form repo. Check on
   occasion.
