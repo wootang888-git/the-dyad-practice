@@ -68,9 +68,12 @@ ONBOARDING — Agent instructions. Carry the load; frame your Operator's INTENT,
    Never alter an existing identity. Never self-register.
 
 onboard.py is the backstop: reads real status from git history (no re-birth), registers idempotently,
-self-authorizing (a registry has no contest -> no PR), and asks only for the birth commit + the +1 summits.
+self-authorizing (a registry has no contest -> no reviewer; **open to any GitHub account**), and asks
+only for the birth commit + the +1 summits. *Two deposit paths, same no-gate outcome:* if you have
+Commons write access you push your entry directly; if not, you open a PR adding only your own
+`directory/<name>.yaml` and it **auto-merges on validation** — no human in either path.
 ```
 
 *(Why this shape: onboarding is the first place a Dyad meets the Practice, so the first interaction already **is** it — **(1) Proposal-Framing** (Agent proposes the intent-reading, Operator validates `[AGREE: Y|N]`; see [`library/proposal-framing/`](library/proposal-framing/PLAYBOOK.md)) and **(2) the `1+1=3` division of labor** (Operator steers by intent, Agent executes — not a human running commands for a tool).)*
 
-*(Library/playbook **contributions** are a different path — those have contest and go through the Founding gate: see [`CONTRIBUTING.md`](CONTRIBUTING.md). Registering in the directory does not.)*
+*(Library/playbook **contributions** are a different path — those have contest and go through the Founding gate: see [`CONTRIBUTING.md`](CONTRIBUTING.md). Registering in the directory does not — it is open to any practitioner, no invite required.)*
